@@ -5,8 +5,6 @@ NeuraMed is an AI and Blockchain-powered platform designed to detect counterfeit
 
 ## 🚀 Project Overview
 
-Counterfeit medicines pose a serious threat to global health. NeuraMed tackles this problem through:
-
 - 🧠 **Artificial Intelligence** that scans and analyzes images of pills and packaging to detect anomalies and forgeries.
 - 🔗 **Blockchain technology** to trace the complete lifecycle of a medicine from the manufacturer to the consumer.
 - 📱 **Instant QR/Barcode Scan** verification for real-time validation of medicine packages.
@@ -22,30 +20,30 @@ Counterfeit medicines pose a serious threat to global health. NeuraMed tackles t
 ## 🛠️ Tech Stack
 
 ### 🖥️ Frontend
-- [Next.js](https://nextjs.org/) – React framework for production-ready UIs
-- [Tailwind CSS](https://tailwindcss.com/) *(Optional)* – For rapid UI styling
+- **Next.js** – React framework for production-ready UIs  
+- **Tailwind CSS** – For rapid UI styling
 
 ### ⚙️ Backend
-- [Node.js](https://nodejs.org/) – Backend runtime environment
-- [Express.js](https://expressjs.com/) – API routing
-- [MongoDB](https://www.mongodb.com/) – NoSQL database for storing user and medicine data
+- **Node.js** – Backend runtime environment  
+- **Express.js** – API routing  
+- **MongoDB** – NoSQL database for storing user and medicine data
 
 ### 🤖 AI/ML Component
-- [TensorFlow](https://www.tensorflow.org/) / [PyTorch](https://pytorch.org/) – Model training
-- [Hugging Face Transformers](https://huggingface.co/transformers/) – Pre-trained AI models
-- [scikit-learn](https://scikit-learn.org/) – Data preprocessing
-- [Pandas](https://pandas.pydata.org/), [NumPy](https://numpy.org/) – Data manipulation
-- [Flask](https://flask.palletsprojects.com/) / [FastAPI](https://fastapi.tiangolo.com/) – Hosting AI models via API
-- [NVIDIA CUDA](https://developer.nvidia.com/cuda-zone) – GPU acceleration (if supported)
+- **TensorFlow / PyTorch** – Model training  
+- **Hugging Face Transformers** – Pre-trained AI models  
+- **scikit-learn** – Data preprocessing  
+- **Pandas, NumPy** – Data manipulation  
+- **Flask / FastAPI** – Hosting AI models via API  
+- **NVIDIA CUDA** – GPU acceleration (if supported)
 
 ### 🔐 Blockchain Component
-- [Solidity](https://soliditylang.org/) – Smart contract language
-- [Web3.js](https://web3js.readthedocs.io/) / [ethers.js](https://docs.ethers.io/) – DApp integration
-- [Hardhat](https://hardhat.org/) / [Truffle](https://trufflesuite.com/) – Smart contract development
-- [OpenZeppelin](https://openzeppelin.com/) – Secure contract libraries
-- [IPFS](https://ipfs.tech/) – Decentralized storage
-- [MetaMask](https://metamask.io/) / [WalletConnect](https://walletconnect.org/) – Wallet authentication
-- [Polygon](https://polygon.technology/) / [Optimism](https://www.optimism.io/) – Layer 2 blockchain scaling
+- **Solidity** – Smart contract language  
+- **Web3.js / ethers.js** – DApp integration  
+- **Hardhat / Truffle** – Smart contract development  
+- **OpenZeppelin** – Secure contract libraries  
+- **IPFS** – Decentralized storage  
+- **MetaMask / WalletConnect** – Wallet authentication  
+- **Polygon / Optimism** – Layer 2 blockchain scaling
 
 ## 📸 How It Works
 
