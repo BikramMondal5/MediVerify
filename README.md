@@ -49,10 +49,10 @@ Counterfeit medicines pose a serious threat to global health. NeuraMed tackles t
 
 ## 📸 How It Works
 
-1. **Scan** – User scans the medicine packaging via the web/mobile interface.
-2. **Detect** – The AI model analyzes the image for inconsistencies in shape, color, label, or packaging.
-3. **Verify** – Blockchain is queried to match product data against the official record.
-4. **Result** – The system shows whether the medicine is authentic or fake.
+1. **Scan** – User scans the medicine packaging via the web/mobile interface. 📸
+2. **Detect** – The AI model analyzes the image for inconsistencies in shape, color, label, or packaging. 🔍
+3. **Verify** – Blockchain is queried to match product data against the official record. ✅
+4. **Result** – The system shows whether the medicine is authentic or fake. 🏷️
 
 ---
 
