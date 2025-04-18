@@ -1,7 +1,7 @@
 import { useState, useLayoutEffect } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import { ShieldCheck, Camera, ScanLine, CheckCircle, Sun, Moon } from "lucide-react";
+import { ShieldCheck, Camera, ScanLine, CheckCircle, Sun, Moon, Clock, Sparkles, Zap } from "lucide-react";
 
 export default function HomePage() {
   const [darkMode, setDarkMode] = useState(true);
@@ -20,7 +20,18 @@ export default function HomePage() {
   };
 
   return (
-    <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"}>
+    <div
+      className={darkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"}
+      style={{
+        backgroundImage: `url(/BG.webp)`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "fixed",
+        backgroundBlendMode: "multiply",
+        backgroundColor: darkMode ? "#1f2937" : "#d1d5db",
+      }}
+    >
       <motion.div
         className={`flex justify-between items-center px-6 py-4 shadow-sm ${darkMode ? 'bg-gray-800' : 'bg-white'}`}
         initial={{ y: -50, opacity: 0 }}
@@ -35,18 +46,18 @@ export default function HomePage() {
           >
             {darkMode ? <Sun size={20} /> : <Moon size={20} />}
           </button>
-          <motion.button 
+          <motion.button
             onClick={handleLoginClick}
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl text-lg transition"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}
           >
             Login
           </motion.button>
-          <motion.button 
+          <motion.button
             onClick={handleSignupClick}
             className="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-xl text-lg transition"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}
           >
             Signup
@@ -61,15 +72,15 @@ export default function HomePage() {
           transition={{ duration: 1 }}
           className="max-w-xl"
         >
-          <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'}`}>
+          <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'} leading-tight`}>
             Is Your <span className="text-blue-600">Medication</span> Genuine?
           </h2>
-          <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
+          <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-6 leading-relaxed`}>
             Verify authenticity instantly using AI image analysis & blockchain verification.
           </p>
           <motion.button
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-lg transition"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}
           >
             Verify Now
@@ -112,40 +123,95 @@ export default function HomePage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <h3 className={`text-2xl font-semibold text-center ${darkMode ? 'text-white' : 'text-gray-900'} mb-10`}>How It Works</h3>
+        <h3 className={`text-2xl font-semibold text-center ${darkMode ? 'text-white' : 'text-gray-900'} mb-10`}>
+          How It Works?
+        </h3>
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className={`p-6 border rounded-xl text-center ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}
-          >
-            <Camera className={`mx-auto mb-4 ${darkMode ? 'text-blue-600' : 'text-blue-500'}`} size={36} />
-            <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Step 1: Snap a Photo</h4>
-            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Capture the medication using your phone or webcam.</p>
-          </motion.div>
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className={`p-6 border rounded-xl text-center ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}
-          >
-            <ScanLine className={`mx-auto mb-4 ${darkMode ? 'text-blue-600' : 'text-blue-500'}`} size={36} />
-            <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Step 2: Analyze with AI</h4>
-            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>AI detects packaging authenticity patterns.</p>
-          </motion.div>
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className={`p-6 border rounded-xl text-center ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}
-          >
-            <ShieldCheck className={`mx-auto mb-4 ${darkMode ? 'text-blue-600' : 'text-blue-500'}`} size={36} />
-            <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Step 3: Verify on Blockchain</h4>
-            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Supply chain data confirms source and authenticity.</p>
-          </motion.div>
-          <motion.div 
-            whileHover={{ scale: 1.05 }}
-            className={`p-6 border rounded-xl text-center ${darkMode ? 'border-gray-700' : 'border-gray-300'}`}
-          >
-            <CheckCircle className={`mx-auto mb-4 ${darkMode ? 'text-green-600' : 'text-green-500'}`} size={36} />
-            <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>Step 4: Get Your Result</h4>
-            <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Instant result: Verified ✅ or Suspicious ⚠️</p>
-          </motion.div>
+          {[
+            {
+              Icon: Camera,
+              title: "Step 1: Snap a Photo",
+              desc: "Capture the medication using your phone or webcam.",
+            },
+            {
+              Icon: ScanLine,
+              title: "Step 2: Analyze with AI",
+              desc: "AI detects packaging authenticity patterns.",
+            },
+            {
+              Icon: ShieldCheck,
+              title: "Step 3: Verify on Blockchain",
+              desc: "Supply chain data confirms source and authenticity.",
+            },
+            {
+              Icon: CheckCircle,
+              title: "Step 4: Get Your Result",
+              desc: "Instant result: Verified ✅ or Suspicious ⚠️",
+            },
+          ].map(({ Icon, title, desc }, i) => (
+            <motion.div
+              key={i}
+              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.2, delay: i * 0.1 }}
+              viewport={{ once: true }}
+              className={`p-6 border rounded-xl text-center ${darkMode ? 'border-gray-700 bg-gray-800' : 'border-gray-300 bg-gray-100'}`}
+            >
+              <Icon className={`mx-auto mb-4 ${darkMode ? 'text-blue-600' : 'text-blue-500'}`} size={36} />
+              <h4 className={`font-semibold ${darkMode ? 'text-white' : 'text-gray-900'}`}>{title}</h4>
+              <p className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>{desc}</p>
+            </motion.div>
+          ))}
+        </div>
+      </motion.section>
+
+      <motion.section
+        className="px-6 lg:px-20 py-16"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
+        <h3 className={`text-2xl font-semibold text-center ${darkMode ? 'text-white' : 'text-gray-900'} mb-10`}>
+          Why MediVerify?
+        </h3>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {[
+            {
+              icon: <Clock size={32} className="text-blue-500 dark:text-blue-400 mx-auto mb-4" />,
+              title: "Real-Time Verification",
+              desc: "Instant results with lightning-speed AI analysis, right when you need it.",
+              delay: 0.2,
+            },
+            {
+              icon: <Sparkles size={32} className="text-purple-500 dark:text-purple-400 mx-auto mb-4" />,
+              title: "Local Medicine Detection",
+              desc: "Tailored models trained on regional medications and known counterfeits.",
+              delay: 0.4,
+            },
+            {
+              icon: <Zap size={32} className="text-green-500 dark:text-green-400 mx-auto mb-4" />,
+              title: "Seamless Experience",
+              desc: "User-friendly interface with smooth navigation across all devices.",
+              delay: 0.6,
+            },
+          ].map(({ icon, title, desc, delay }, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.1, delay }}
+              viewport={{ once: true }}
+              className={`p-6 border rounded-xl text-center transition-all ${
+                darkMode ? 'border-gray-700 bg-gray-800 text-white' : 'border-gray-200 bg-white text-gray-900'
+              }`}
+            >
+              {icon}
+              <h4 className="text-lg font-semibold mb-2">{title}</h4>
+              <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'} text-sm`}>{desc}</p>
+            </motion.div>
+          ))}
         </div>
       </motion.section>
 
@@ -155,29 +221,40 @@ export default function HomePage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
       >
-        <h3 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'} mb-4`}>Why are you still here?</h3>
+        <h3 className={`text-2xl font-semibold ${darkMode ? 'text-white' : 'text-gray-900'} mb-4`}>
+          Why are you still here?
+        </h3>
         <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
           Start using MediVerify to ensure the authenticity of your medication.
         </p>
         <div className="flex justify-center gap-4">
-          <motion.button 
+          <motion.button
             onClick={handleLoginClick}
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-lg transition"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}
           >
             Login
           </motion.button>
-          <motion.button 
+          <motion.button
             onClick={handleSignupClick}
             className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-xl text-lg transition"
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}
           >
             Signup
           </motion.button>
         </div>
       </motion.section>
+
+      <motion.footer
+        className={`py-4 text-center ${darkMode ? 'bg-gray-800 text-gray-400' : 'bg-gray-100 text-gray-600'}`}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+      >
+        <p className="text-sm">Made with ❤️ for patient safety • © 2025 MediVerify</p>
+      </motion.footer>
     </div>
   );
 }

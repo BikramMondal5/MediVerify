@@ -1,158 +1,136 @@
-import { useEffect, useState, FormEvent } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Sun, Moon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
-  const [darkMode, setDarkMode] = useState<boolean>(true);
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [darkMode, setDarkMode] = useState(true);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Check if the user is already logged in by checking localStorage
-    const loggedInEmail = localStorage.getItem("userEmail");
-    if (loggedInEmail) {
-      // If user is already logged in, redirect to dashboard
-      navigate("/dashboard");
-    }
-
     const savedMode = localStorage.getItem("darkMode");
-    if (savedMode !== null) {
-      setDarkMode(savedMode === "true");
-    }
-  }, [navigate]);
+    if (savedMode !== null) setDarkMode(savedMode === "true");
+  }, []);
 
   useEffect(() => {
     localStorage.setItem("darkMode", darkMode.toString());
   }, [darkMode]);
 
-  const handleLogin = async (e: FormEvent<HTMLFormElement>) => {
+  const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-
-    if (!email || !password) {
-      setErrorMessage("⚠️ Please fill in both email and password.");
-      return;
-    }
-
-    // Get all saved emails from localStorage
-    const savedEmails = JSON.parse(localStorage.getItem("users") || "[]");
-    
-    const user = savedEmails.find((user: { email: string, password: string }) => user.email === email && user.password === password);
-
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const user = users.find(
+      (u: { email: string; password: string }) =>
+        u.email === email && u.password === password
+    );
     if (user) {
-      // If email and password match, set userEmail in localStorage and navigate to dashboard
       localStorage.setItem("userEmail", email);
-      setErrorMessage("");
-      navigate("/dashboard"); // Redirect to dashboard after successful login
+      navigate("/dashboard");
     } else {
-      // If credentials are invalid, show error message and "Sign Up" button
       setErrorMessage("⚠️ Invalid email or password.");
     }
   };
 
-  const handleSignUpRedirect = () => {
-    navigate("/signup");
-  };
-
   return (
-    <div className={darkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"}>
-      {/* Navbar */}
-      <div className={`flex justify-between items-center px-6 py-4 shadow-sm ${darkMode ? "bg-gray-800" : "bg-white"}`}>
-        <h1 className={`text-xl font-bold ${darkMode ? "text-white" : "text-gray-900"}`}>MediVerify</h1>
-        <button
-          onClick={() => setDarkMode(!darkMode)}
-          className="p-2 rounded-full bg-gray-200 dark:bg-gray-800 hover:scale-105 transition"
-        >
+    <div className={`${darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"} min-h-screen`}>
+
+      <div className={`flex justify-between items-center px-6 py-4 shadow-md ${darkMode ? "bg-gray-800" : "bg-white"}`}>
+        <h1 className="text-xl font-bold">MediVerify</h1>
+        <button onClick={() => setDarkMode(!darkMode)} className="p-2 rounded-full transition hover:scale-105">
           {darkMode ? <Sun size={20} /> : <Moon size={20} />}
         </button>
       </div>
 
-      {/* Login Section */}
-      <section className="flex justify-center items-center h-screen px-6 py-20 relative">
-        <img
-          src="https://source.unsplash.com/1600x900/?medicine,health"
-          alt="Background"
-          className="absolute top-0 left-0 w-full h-full object-cover opacity-40 z-0"
-        />
-
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className={`max-w-md w-full p-6 rounded-xl shadow-lg z-10 ${darkMode ? "bg-gray-800" : "bg-white"}`}
+      <div className="grid grid-cols-1 md:grid-cols-2 h-[calc(100vh-72px-80px)]">
+        <div
+          className={`flex flex-col justify-center items-center px-10 relative 
+            ${darkMode ? "bg-gradient-to-br from-gray-800 to-gray-700" : "bg-gradient-to-br from-blue-100 to-white"}`}
         >
-          <h2 className={`text-3xl font-bold text-center mb-6 ${darkMode ? "text-white" : "text-gray-900"}`}>
-            Login to MediVerify
-          </h2>
-
-          {errorMessage && (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-red-500 text-center mb-4"
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.8 }}
+            className="text-center relative z-10"
+          >
+            <motion.h2
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              className={`text-4xl md:text-5xl font-extrabold mb-6 bg-clip-text text-transparent 
+                ${
+                  darkMode
+                    ? "bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400"
+                    : "bg-gradient-to-r from-blue-600 to-purple-600"
+                }`}
             >
-              {errorMessage}
-            </motion.div>
-          )}
+              Real medicine. Verified.
+            </motion.h2>
 
-          <form onSubmit={handleLogin}>
-            <div className="mb-4">
-              <label htmlFor="email" className={`block mb-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
-                Email
-              </label>
+            <motion.p
+              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
+              transition={{ delay: 0.2 }}
+              className="text-base md:text-lg tracking-wide font-light max-w-md mx-auto"
+            >
+              Ensuring authenticity with AI and blockchain. Say goodbye to fake medicines and hello to trusted healthcare.
+            </motion.p>
+          </motion.div>
+
+          <div className="absolute top-0 left-0 w-full h-full bg-cover bg-center opacity-40 z-0"
+            style={{ backgroundImage: `url(/Login.webp)`}}>
+          </div>
+        </div>
+
+        <div className="flex items-center justify-center px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`shadow-xl rounded-2xl p-8 w-full max-w-sm 
+              ${darkMode ? "bg-gray-800" : "bg-white"}`}
+          >
+            <h3 className="text-2xl font-semibold mb-6 text-center">Login to your account</h3>
+            <form onSubmit={handleLogin}>
+              <label className="block text-sm mb-2">Email</label>
               <input
                 type="email"
-                id="email"
-                placeholder="Enter your email"
-                className={`w-full p-3 border rounded-lg ${darkMode ? "bg-gray-700 text-gray-300" : "bg-gray-100 text-gray-900"}`}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
+                className={`w-full mb-4 px-4 py-2 rounded border text-sm 
+                  ${darkMode ? "bg-gray-700 text-white border-gray-600" : "bg-white text-gray-900 border-gray-300"}`}
               />
-            </div>
 
-            <div className="mb-6">
-              <label htmlFor="password" className={`block mb-2 ${darkMode ? "text-gray-300" : "text-gray-700"}`}>
-                Password
-              </label>
+              <label className="block text-sm mb-2">Password</label>
               <input
                 type="password"
-                id="password"
-                placeholder="Enter your password"
-                className={`w-full p-3 border rounded-lg ${darkMode ? "bg-gray-700 text-gray-300" : "bg-gray-100 text-gray-900"}`}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
+                className={`w-full mb-4 px-4 py-2 rounded border text-sm 
+                  ${darkMode ? "bg-gray-700 text-white border-gray-600" : "bg-white text-gray-900 border-gray-300"}`}
               />
-            </div>
 
-            <button
-              type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl transition"
-            >
-              Login
-            </button>
-          </form>
-
-          {/* Show the SignUp Button if login fails */}
-          {errorMessage && (
-            <div className="mt-4 text-center">
               <button
-                onClick={handleSignUpRedirect}
-                className="text-blue-600 hover:text-blue-800 transition"
+                type="submit"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-xl text-sm transition"
               >
-                Create a new account
+                Login now
               </button>
-            </div>
-          )}
-        </motion.div>
-      </section>
+            </form>
 
-      {/* Footer */}
-      <footer className={`px-6 py-10 text-center text-sm ${darkMode ? "text-gray-400" : "text-gray-500"} border-t ${darkMode ? "border-gray-700" : "border-gray-200"}`}>
-        Made with ❤️ for patient safety • © 2025 MediVerify
+            {errorMessage && <p className="text-red-500 text-sm mt-4 text-center">{errorMessage}</p>}
+
+            <p className="text-xs mt-6 text-center">
+              Don’t have an account?{" "}
+              <span className="text-blue-600 cursor-pointer" onClick={() => navigate("/signup")}>
+                Sign up
+              </span>
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      <footer className={`px-6 py-8 text-center text-sm border-t ${darkMode ? 'text-gray-400 border-gray-700' : 'text-gray-500 border-gray-200'}`}>
+        MediVerify • Powered by Trust • © 2025
       </footer>
     </div>
   );
