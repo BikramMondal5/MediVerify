@@ -98,7 +98,7 @@ export default function HomePage() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="rounded-xl overflow-hidden shadow-lg"
         >
-          <img src="/mockup_scan_demo.png" alt="Scan Medication Demo" className="w-full max-w-sm" />
+          <img src="/Home.webp" alt="Scan Medication Demo" className="w-full max-w-sm" />
         </motion.div>
       </section>
 
