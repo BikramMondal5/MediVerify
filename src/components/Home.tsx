@@ -80,7 +80,7 @@ export default function HomePage() {
           transition={{ duration: 1 }}
           className="max-w-xl"
         >
-          <h2 className={`text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'} leading-tight`}>
+          <h2 className={`select-none text-4xl font-bold mb-4 ${darkMode ? 'text-white' : 'text-gray-900'} leading-tight`}>
             Is Your <span className="text-blue-600">Medication</span> Genuine?
           </h2>
           <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-6 leading-relaxed`}>

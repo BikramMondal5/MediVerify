@@ -100,7 +100,7 @@ export default function Dashboard() {
         transition={{ duration: 0.8 }}
         className="text-center py-16 px-8"
       >
-        <h1 className={`text-5xl font-bold mb-6 ${darkMode ? "text-blue-700" : "text-cyan-800"}`}>
+        <h1 className={`text-5xl select-none font-bold mb-6 ${darkMode ? "text-blue-700" : "text-cyan-800"}`}>
           {userName !== "Guest" ? `${displayName}, Welcome to ` : `Hello Guest, Welcome to `}
           <span
             className={`text-5xl font-extrabold ${darkMode ? "text-cyan-800" : "text-blue-700"}`}
@@ -110,7 +110,7 @@ export default function Dashboard() {
           </span>
         </h1>
         <motion.p
-          className="text-xl max-w-3xl mx-auto"
+          className="text-xl max-w-3xl mx-auto select-none"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.4, duration: 0.8 }}
@@ -146,7 +146,7 @@ export default function Dashboard() {
         className="max-w-7xl mx-auto py-16 px-8 grid grid-cols-1 md:grid-cols-2 gap-10 items-center"
       >
         <img
-          src="/Dashboard.avif"
+          src="/Statistics.jpeg"
           alt="Medicine verification"
           className="rounded-xl shadow-lg"
         />
