@@ -19,6 +19,10 @@ export default function HomePage() {
     navigate("/signup");
   };
 
+  const handleVerifyNowClick = () => {
+    navigate("/dashboard")
+  }
+
   return (
     <div
       className={darkMode ? "dark bg-gray-900 text-white" : "bg-white text-gray-900"}
@@ -79,6 +83,7 @@ export default function HomePage() {
             Verify authenticity instantly using AI image analysis & blockchain verification.
           </p>
           <motion.button
+            onClick={handleVerifyNowClick}
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-lg transition"
             whileHover={{ scale: 1.15 }}
             whileTap={{ scale: 0.95 }}

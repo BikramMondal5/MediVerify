@@ -22,15 +22,15 @@ export default function LoginPage() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const user = users.find(
-      (u: { email: string; password: string }) =>
-        u.email === email && u.password === password
-    );
-    if (user) {
+    const existingUser = users.find((u: { email: string }) => u.email === email);
+
+    if (existingUser) {
+      setErrorMessage("⚠️ Email already registered. Please log in.");
+    } else {
+      const newUser = { email, password };
+      localStorage.setItem("users", JSON.stringify([...users, newUser]));
       localStorage.setItem("userEmail", email);
       navigate("/dashboard");
-    } else {
-      setErrorMessage("⚠️ Invalid email or password.");
     }
   };
 
