@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [darkMode, setDarkMode] = useState(true);
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -27,9 +28,10 @@ export default function LoginPage() {
     if (existingUser) {
       setErrorMessage("⚠️ Email already registered. Please log in.");
     } else {
-      const newUser = { email, password };
+      const newUser = { name, email, password };
       localStorage.setItem("users", JSON.stringify([...users, newUser]));
       localStorage.setItem("userEmail", email);
+      localStorage.setItem("userName", name); 
       navigate("/dashboard");
     }
   };
@@ -90,11 +92,28 @@ export default function LoginPage() {
           >
             <h3 className="text-2xl font-semibold mb-6 text-center">Sign up for an account</h3>
             <form onSubmit={handleLogin}>
+              <label className="block text-sm mb-2">Your Name</label>
+              <input
+                type="text"
+                value={name}
+                onChange={(e) => {
+                  setName(e.target.value);
+                  setErrorMessage("");
+                }}
+                required
+                className={`w-full mb-4 px-4 py-2 rounded border text-sm 
+                  ${darkMode ? "bg-gray-700 text-white border-gray-600" : "bg-white text-gray-900 border-gray-300"}`}
+              />
+
               <label className="block text-sm mb-2">Email</label>
               <input
                 type="email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => {
+                  setEmail(e.target.value);
+                  setErrorMessage("");
+                }}
+                required
                 className={`w-full mb-4 px-4 py-2 rounded border text-sm 
                   ${darkMode ? "bg-gray-700 text-white border-gray-600" : "bg-white text-gray-900 border-gray-300"}`}
               />
@@ -103,7 +122,11 @@ export default function LoginPage() {
               <input
                 type="password"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => {
+                  setPassword(e.target.value);
+                  setErrorMessage("");
+                }}
+                required
                 className={`w-full mb-4 px-4 py-2 rounded border text-sm 
                   ${darkMode ? "bg-gray-700 text-white border-gray-600" : "bg-white text-gray-900 border-gray-300"}`}
               />

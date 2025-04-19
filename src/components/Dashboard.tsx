@@ -13,8 +13,11 @@ const data = [
 export default function Dashboard() {
   const [darkMode, setDarkMode] = useState(true);
   const navigate = useNavigate();
+  const userName = localStorage.getItem("userName") || "Guest";
+  const displayName = userName.charAt(0).toUpperCase() + userName.slice(1);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const savedMode = localStorage.getItem("darkMode");
     if (savedMode) setDarkMode(savedMode === "true");
   }, []);
@@ -24,7 +27,7 @@ export default function Dashboard() {
   }, [darkMode]);
 
   const handleLogout = () => {
-    localStorage.removeItem("userEmail");
+    localStorage.removeItem("userName");
     navigate("/login");
   };
 
@@ -97,10 +100,23 @@ export default function Dashboard() {
         transition={{ duration: 0.8 }}
         className="text-center py-16 px-8"
       >
-        <h1 className="text-5xl font-bold mb-6">Welcome to MediVerify</h1>
-        <p className="text-xl max-w-3xl mx-auto">
+        <h1 className={`text-5xl font-bold mb-6 ${darkMode ? "text-blue-700" : "text-cyan-800"}`}>
+          {userName !== "Guest" ? `${displayName}, Welcome to ` : `Hello Guest, Welcome to `}
+          <span
+            className={`text-5xl font-extrabold ${darkMode ? "text-cyan-800" : "text-blue-700"}`}
+            style={{ transition: "transform 0.5s ease-out" }}
+          >
+            MediVerify
+          </span>
+        </h1>
+        <motion.p
+          className="text-xl max-w-3xl mx-auto"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
           Ensuring your medication is safe and authentic — simply upload a photo or take a snapshot to begin verification.
-        </p>
+        </motion.p>
       </motion.section>
 
       <motion.section
@@ -171,7 +187,7 @@ export default function Dashboard() {
             <strong>Email:</strong> support@medverify.com
           </div>
           <div className="text-lg">
-            <strong>Phone:</strong> +1 800 123 4567
+            <strong>Phone:</strong> +91 800123456
           </div>
         </div>
       </motion.section>

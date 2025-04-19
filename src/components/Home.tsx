@@ -20,8 +20,12 @@ export default function HomePage() {
   };
 
   const handleVerifyNowClick = () => {
-    navigate("/dashboard")
-  }
+    navigate("/dashboard");
+  };
+
+  const handleGuestClick = () => {
+    navigate("/dashboard");
+  };
 
   return (
     <div
@@ -232,7 +236,7 @@ export default function HomePage() {
         <p className={`text-lg ${darkMode ? 'text-gray-300' : 'text-gray-600'} mb-6`}>
           Start using MediVerify to ensure the authenticity of your medication.
         </p>
-        <div className="flex justify-center gap-4">
+        <div className="flex justify-center gap-4 mb-6">
           <motion.button
             onClick={handleLoginClick}
             className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl text-lg transition"
@@ -250,6 +254,17 @@ export default function HomePage() {
             Signup
           </motion.button>
         </div>
+        <p className={`text-lg font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-700'} mb-4`}>
+          Just want to explore? <span className="text-blue-500">Dive in as a guest!</span>
+        </p>
+        <motion.button
+          onClick={handleGuestClick}
+          className="bg-gray-700 hover:bg-gray-800 text-white px-5 py-2 rounded-lg text-base transition"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Start as Guest
+        </motion.button>
       </motion.section>
 
       <motion.footer

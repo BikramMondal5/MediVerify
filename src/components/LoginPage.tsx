@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 export default function LoginPage() {
   const [darkMode, setDarkMode] = useState(true);
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState(""); 
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
@@ -23,14 +23,16 @@ export default function LoginPage() {
     e.preventDefault();
     const users = JSON.parse(localStorage.getItem("users") || "[]");
     const user = users.find(
-      (u: { email: string; password: string }) =>
-        u.email === email && u.password === password
+      (u: { email: string; name: string; password: string }) =>
+        (u.email === identifier || u.name === identifier) && u.password === password
     );
+
     if (user) {
-      localStorage.setItem("userEmail", email);
+      localStorage.setItem("userName", user.name);  
+      localStorage.setItem("userEmail", user.email);
       navigate("/dashboard");
     } else {
-      setErrorMessage("⚠️ Invalid email or password.");
+      setErrorMessage("⚠️ Invalid name/email or password.");
     }
   };
 
@@ -91,11 +93,11 @@ export default function LoginPage() {
           >
             <h3 className="text-2xl font-semibold mb-6 text-center">Login to your account</h3>
             <form onSubmit={handleLogin}>
-              <label className="block text-sm mb-2">Email</label>
+              <label className="block text-sm mb-2">Name or Email</label>
               <input
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                value={identifier}
+                onChange={(e) => setIdentifier(e.target.value)}
                 className={`w-full mb-4 px-4 py-2 rounded border text-sm 
                   ${darkMode ? "bg-gray-700 text-white border-gray-600" : "bg-white text-gray-900 border-gray-300"}`}
               />
