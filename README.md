@@ -65,9 +65,9 @@ MediVerify is an AI and Blockchain-powered platform designed to detect counterfe
 
 ## 🤝 Contributors
 
-- Aditya Kumar Jha - `Project Lead, Frontend developer`
+- Aditya Kumar Jha - `Frontend developer`
 - Aranya Sen - `Backend developer`
-- Subhodeep Roy - `Block-chain developer`
+- Subhodeep Roy - `Project Lead, Block-chain developer`
 - Bikram Mondal – `Machine Learning Developer`
 
 ## 📜 License
