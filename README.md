@@ -1,6 +1,6 @@
-# 🧠🔍 NeuraMed - Intelligence that safeguards every pill
+# 🧠🔍 MediVerify - Intelligence that safeguards every pill
 
-NeuraMed is an AI and Blockchain-powered platform designed to detect counterfeit medications and ensure pharmaceutical authenticity. This system enables patients, pharmacists, and healthcare providers to verify the legitimacy of medicine using AI-driven visual analysis and transparent blockchain tracking.
+MediVerify is an AI and Blockchain-powered platform designed to detect counterfeit medications and ensure pharmaceutical authenticity. This system enables patients, pharmacists, and healthcare providers to verify the legitimacy of medicine using AI-driven visual analysis and transparent blockchain tracking.
 
 
 ## 🚀 Project Overview
