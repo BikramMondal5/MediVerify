@@ -20,8 +20,13 @@ MediVerify is an AI and Blockchain-powered platform designed to detect counterfe
 ## 🛠️ Tech Stack
 
 ### 🖥️ Frontend
-- **Next.js** – React framework for production-ready UIs  
+- **React** – UI library for building interactive interfaces
+- **Vite** – Fast build tooling and development server
+- **TypeScript** – Type-safe JavaScript for robust code
 - **Tailwind CSS** – For rapid UI styling
+- **React Router** – Client-side routing
+- **Framer Motion** – Animations and transitions
+- **Recharts** – Data visualization
 
 ### ⚙️ Backend
 - **Node.js** – Backend runtime environment  
@@ -62,6 +67,15 @@ MediVerify is an AI and Blockchain-powered platform designed to detect counterfe
 - MetaMask Wallet
 - Truffle or Hardhat
 - CUDA toolkit (optional for GPU)
+
+## 🚀 Getting Started
+
+```bash
+npm install
+npm run dev
+```
+
+The frontend will be available at http://localhost:5173/
 
 ## 🤝 Contributors
 
